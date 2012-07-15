@@ -1,0 +1,3 @@
+INDEX VERSION 1.126
+C:\Users\charlie\Dropbox\My Dropbox\Uni\DBP\PriSpikeDev\GameLogger\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\372245508.index
+\ROOT\src

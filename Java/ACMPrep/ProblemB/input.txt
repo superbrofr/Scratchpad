@@ -1,0 +1,15 @@
+5001 5
+30/7/2011 8:00AM Meet with supervisor
+30/7/2011 10:00AM Meet with group
+30/6/2011 8:00AM Meet with supervisor
+3/10/2011 11:00AM Submit assignment
+1/7/2011 1:00PM Review assignment
+
+5242 5
+30/7/2011 8:00AM Meet with supervisor
+30/7/2011 8:00AM Meet with group
+30/7/2011 10:00AM Meet with tutor
+30/7/2011 1:00PM Review assignment
+30/7/2011 5:00PM Submit assignment
+
+0

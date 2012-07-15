@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Notebook()
+comment0.text=\n\ Perform\ any\ initialization\ that\ is\ required\ for\ the\n\ notebook.\n
+comment1.params=note
+comment1.target=void\ storeNote(java.lang.String)
+comment1.text=\n\ Store\ a\ new\ note\ into\ the\ notebook.\n\ @param\ note\ The\ note\ to\ be\ stored.\n
+comment2.params=
+comment2.target=int\ numberOfNotes()
+comment2.text=\n\ @return\ The\ number\ of\ notes\ currently\ in\ the\ notebook.\n
+comment3.params=noteNumber
+comment3.target=void\ showNote(int)
+comment3.text=\n\ Show\ a\ note.\n\ @param\ noteNumber\ The\ number\ of\ the\ note\ to\ be\ shown.\n
+comment4.params=noteNumber
+comment4.target=void\ removeNote(int)
+comment5.params=
+comment5.target=void\ listNotes()
+comment6.params=searchString
+comment6.target=void\ search(java.lang.String)
+comment7.params=searchString
+comment7.target=void\ removeContaining(java.lang.String)
+numComments=8

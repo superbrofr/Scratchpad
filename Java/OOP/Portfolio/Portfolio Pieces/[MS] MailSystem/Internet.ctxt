@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Internet()
+comment1.params=addserv
+comment1.target=boolean\ addServer(MailServer)
+comment1.text=\r\n\ Adds\ a\ server\ to\ the\ Internet's\ list\ of\ servers\r\n\ @param\ addserv\ The\ server\ to\ add.\r\n\ @return\ Whether\ the\ add\ was\ successful\ or\ not.\r\n
+comment2.params=email\ server
+comment2.target=boolean\ sendMail(MailItem,\ java.lang.String)
+comment2.text=\r\n\ Sends\ a\ mail\ item\ to\ the\ specified\ server.\r\n\ @param\ email\ The\ mail\ item\ to\ send.\r\n\ @param\ server\ The\ name\ of\ the\ server\ to\ send\ it\ to.\r\n\ @return\ True\ if\ the\ sending\ was\ successful,\ else\ false.\r\n
+comment3.params=server
+comment3.target=MailServer\ findServer(java.lang.String)
+comment3.text=\r\n\ Finds\ the\ server\ with\ the\ given\ name\ in\ the\ Internet's\ server\ list.\r\n\ @param\ server\ The\ name\ of\ the\ server\ to\ find.\r\n\ @return\ The\ found\ server.\r\n
+numComments=4

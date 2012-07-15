@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=lim
+comment0.target=RandomTester(int)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ RandomTester\r\n
+comment1.params=amount
+comment1.target=void\ generate(int)
+comment1.text=\r\n\ Generates\ the\ specified\ number\ of\ random\ numbers,\ from\ 1\ to\ limit\ (defined\ in\ constructor)\r\n\ Increments\ appropriate\ value\ in\ frequencies\ as\ numbers\ are\ generated.\r\n\ @param\ amount\ The\ number\ of\ numbers\ to\ generate.\r\n
+comment2.params=
+comment2.target=void\ printDetails()
+comment2.text=\r\n\ Displays\ in\ the\ console\ the\ number\ of\ values\ requested,\ and\ the\ number\ of\ times\ each\ value\ from\r\n\ 1\ to\ limit\ occurred,\ as\ well\ as\ the\ percentage\ of\ total\ numbers\ generated\ this\ represents.\r\n\ Does\ not\ print\ details\ of\ numbers\ which\ were\ not\ generated\ at\ all.\r\n
+numComments=3

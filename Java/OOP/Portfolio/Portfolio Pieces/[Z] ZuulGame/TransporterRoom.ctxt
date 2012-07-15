@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=name\ description\ rand
+comment0.target=TransporterRoom(java.lang.String,\ java.lang.String,\ RoomRandomiser)
+comment0.text=\r\n\ Creates\ a\ room.\r\n\ @param\ name\ Then\ name\ of\ the\ room.\r\n\ @param\ description\ The\ description\ of\ the\ room.\r\n\ @param\ rand\ The\ room\ randomiser.\r\n
+comment1.params=direction
+comment1.target=Room\ getExit(java.lang.String)
+comment1.text=\r\n\ Uses\ the\ Randomiser\ to\ return\ a\ random\ room\ to\ which\ the\ player\ is\ directed.\r\n
+numComments=2

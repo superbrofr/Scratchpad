@@ -1,0 +1,160 @@
+package gLServlet;
+
+import java.io.*;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.TimeZone;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+import businessLayer.AdminManager;
+import businessLayer.CommentManager;
+import businessLayer.LoginManager;
+import businessLayer.ProfileManager;
+import businessLayer.SessionStrings;
+import dao.PageCommentDAO;
+import dao.UserDAO;
+
+/**
+ * Displays a public view of a users' profile.
+ */
+public class PublicUserProfile extends HttpServlet
+{
+	private static final int pageSize = 15;
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		HTMLHelpers.printHead(out);
+		HTMLHelpers.printToOpenCenterContent(out, request.getSession(), "publicUserProfile");
+
+		// Start printing profile data
+		String pathInfo[] = null;
+		if(request.getPathInfo() != null)
+			pathInfo = request.getPathInfo().split("/");
+		
+		UserDAO toDisplay = null;
+		if((pathInfo != null) && (pathInfo.length == 2)) // 2 because the split for some reason results in an empty 0-element
+			toDisplay = ProfileManager.fetchUser(pathInfo[1]);
+		
+		if(toDisplay != null){
+			// check for any admin changes
+			String lAdminEdit = request.getParameter("adminEdit");
+			String lAdminPass = request.getParameter("adminPassword");
+			if(lAdminEdit != null){
+				if(LoginManager.login((String)request.getSession().getAttribute("username"), lAdminPass)){ // only perform admin action if they enter their valid password
+					if(lAdminEdit.equals("makeAdmin"))
+						AdminManager.makeAdmin(toDisplay.getUsername());
+					else if(lAdminEdit.equals("deactivateUser"))
+							AdminManager.deactivateUser(toDisplay.getUsername());
+					else if(lAdminEdit.equals("activateUser"))
+						AdminManager.activateUser(toDisplay.getUsername());
+				}
+			}
+			// 'refresh' the view of toDisplay
+			toDisplay = ProfileManager.fetchUser(pathInfo[1]);
+		}
+		
+		if(toDisplay == null){
+			// no such user or error getting user - display error
+			HTMLHelpers.printPublicUserProfileError(out);
+		}
+		else{
+			// check if comment request was made
+			if(request.getParameter("comment") != null){
+				String commentText = (String)request.getParameter("comment");
+				if(commentText.length() > 500)
+					commentText = commentText.substring(0, 499); // just cut it off
+				
+				if(commentText.length() != 0)
+					CommentManager.addNewPageComment(toDisplay.getUsername(), (String)request.getSession().getAttribute("username"), commentText);
+			}
+			
+			// display profile details
+			out.println("<p class=\"publicProfileHeading\">" + toDisplay.getUsername() + "</p>");
+			out.println("<p class=\"publicProfileCategory\">Full Name: <div class=\"publicProfileData\">" + toDisplay.getFirstname() + " " + toDisplay.getSurname() + "</div></p>");
+			out.println("<p class=\"publicProfileCategory\">E-Mail: <div class=\"publicProfileData\">" + toDisplay.getEmail() + "</div></p>");
+			out.println("<p><a href=\"/user/games/" + toDisplay.getUsername() + "\">View game library.</a></p>");
+			
+			
+			out.println("<div class=\"heading\">Comments</div>");
+			int lPage = 0;
+			if(request.getParameter("page") != null)
+				lPage = Integer.parseInt(request.getParameter("page"));
+			out.println(getNextPage(toDisplay.getUsername(), lPage, pageSize));
+			
+			if((request.getSession().getAttribute("loggedIn") != null) && request.getSession().getAttribute("loggedIn").equals(SessionStrings.getLoggedIn())){
+				out.println("<form class=\"userPageCommentForm\" action=\"" + request.getRequestURL() + "\" method=\"POST\">");
+				out.println("Enter comment (max 499 chars - excess will be cut off, <i>mercilessly</i>.): <br/>");
+				out.println("<textarea name=\"comment\" cols=65 rows=3></textarea><br />");
+				out.println("<input type=\"submit\" value=\"Comment\" />");
+				out.println("</form>");
+			}
+			
+			if(request.getSession().getAttribute("admin").equals(SessionStrings.getAdmin()) && (ProfileManager.isAdmin((String)request.getSession().getAttribute("username")))){
+				out.println("<p class=\"publicProfileCategory\">Admin Controls:");
+				out.println("<div class=\"publicProfileData\">");
+				out.println("<form action=\"\" method=\"POST\">");
+				out.println("<input type=\"radio\" name=\"adminEdit\" value=\"makeAdmin\" />Make admin.<br />");
+				if(toDisplay.getActive() == 1)
+					out.println("<input type=\"radio\" name=\"adminEdit\" value=\"deactivateUser\" />Deactivate user.<br />");
+				else if(toDisplay.getActive() == 0)
+					out.println("<input type=\"radio\" name=\"adminEdit\" value=\"activateUser\" />Activate user.<br />");
+				out.println("Password: <input type=\"password\" name=\"adminPassword\" /><br />");
+				out.println("<input type=\"submit\" value=\"Unleash admin powers.\" />");
+				out.println("</form>");
+				out.println("</div>");
+				out.println("</p>");
+			}
+			
+			if(toDisplay.getAdmin() == 1)
+				out.println("<p class=\"subscript\">This user is an administrator.</p>");
+		}
+		
+		
+		// Stop printing profile data
+		
+		HTMLHelpers.printCenterContentToClose(out);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		doGet(request, response);
+	}
+
+	private String getNextPage(String aUsername, int aPage, int aPageSize)
+	{
+		ArrayList<PageCommentDAO> lComments;
+		lComments = CommentManager.fetchUserComments(aUsername, aPage);
+		
+		String lResult = "";
+		if(lComments != null){
+			if(lComments.size() == 0){
+				lResult += "<p>No comments!</p>";
+			}
+			else{
+				for(PageCommentDAO  pc: lComments){
+					lResult += "<p class=\"gameComment\"><i>'<b><a href=\"/user/" + pc.getUserMadeBy().getUsername() + "\">" + pc.getUserMadeBy().getUsername() + "</a></b>' at " + getDateString(pc.getTime()) + ":</i><br />";
+					lResult += pc.getCommentText() + "</p>";
+				}
+				if(aPage > 0)
+					lResult += ("<p><a href=\"?page=" + (aPage - 1) + "\">Previous page</a></p>");
+				if((lComments.size() == pageSize) && (CommentManager.fetchUserComments(aUsername, (aPage + 1)).size() > 0))
+					lResult += ("<p><a href=\"?page=" + (aPage + 1) + "\">Next page</a></p>");
+			}
+		}
+		return lResult;
+	}
+	
+	private String getDateString(long aTime)
+	{
+		Date epoch = new Date(aTime);
+		DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
+		DateFormat tf = DateFormat.getTimeInstance(DateFormat.SHORT);
+		df.setTimeZone(TimeZone.getTimeZone("Australia/Melbourne"));
+		return  tf.format(epoch) + ", " + df.format(epoch);
+	}
+}

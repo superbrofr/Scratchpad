@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ImageViewer()
+comment0.text=\r\n\ Create\ an\ ImageViewer\ show\ it\ on\ screen.\r\n
+comment1.params=
+comment1.target=void\ makeFrame()
+comment1.text=\r\n\ Create\ the\ Swing\ frame\ and\ its\ content.\r\n
+numComments=2

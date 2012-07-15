@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ClockDisplay()
+comment0.text=\r\n\ Creates\ a\ new\ linked\ display\ to\ store\ the\ time.\r\n
+comment1.params=
+comment1.target=void\ showTime()
+comment1.text=\r\n\ Prints\ out\ the\ current\ time\ stored\ in\ the\ clock\ display.\r\n
+comment2.params=
+comment2.target=void\ tick()
+comment2.text=\r\n\ Ticks\ over\ one\ minute\r\n
+comment3.params=toWhat
+comment3.target=void\ setHours(int)
+comment3.text=\r\n\ Change\ the\ value\ of\ the\ hours.\r\n
+comment4.params=toWhat
+comment4.target=void\ setMinutes(int)
+comment4.text=\r\n\ Change\ the\ value\ of\ the\ minutes.\r\n
+numComments=5

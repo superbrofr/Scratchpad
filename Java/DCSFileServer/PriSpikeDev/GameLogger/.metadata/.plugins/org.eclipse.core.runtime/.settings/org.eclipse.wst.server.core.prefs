@@ -1,0 +1,4 @@
+#Tue Sep 20 14:42:54 EST 2011
+module-start-timeout=300000
+runtimes=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<runtimes>\r\n  <runtime id\="Tomcat v7 cPC" location\="C\:/tomcat-7.0.8-preconfigured/apache-tomcat-7.0.8" name\="Tomcat v7 cPC" runtime-type-id\="org.eclipse.jst.server.tomcat.runtime.70" timestamp\="0"/>\r\n</runtimes>\r\n
+eclipse.preferences.version=1

@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=NumberDisplay()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ NumberDisplay.\n\ Set\ the\ limit\ at\ which\ the\ display\ rolls\ over.\n
+comment1.params=limit
+comment1.target=NumberDisplay(int)
+comment2.params=
+comment2.target=int\ getValue()
+comment2.text=\n\ Return\ the\ current\ value.\n
+comment3.params=
+comment3.target=java.lang.String\ getDisplayValue()
+comment4.params=replacementValue
+comment4.target=void\ setValue(int)
+comment5.params=
+comment5.target=void\ increment()
+numComments=6

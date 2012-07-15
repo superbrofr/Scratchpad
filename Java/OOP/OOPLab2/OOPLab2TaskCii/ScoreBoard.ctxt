@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ScoreBoard()
+comment1.params=
+comment1.target=void\ showScore()
+comment2.params=
+comment2.target=void\ team1Goal()
+comment3.params=
+comment3.target=void\ team2Goal()
+comment4.params=
+comment4.target=void\ team1Behind()
+comment5.params=
+comment5.target=void\ team2Behind()
+numComments=6

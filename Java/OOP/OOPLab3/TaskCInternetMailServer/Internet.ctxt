@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Internet()
+comment1.params=addserv
+comment1.target=void\ addServer(MailServer)
+comment2.params=email\ server
+comment2.target=void\ sendMail(MailItem,\ java.lang.String)
+comment3.params=server
+comment3.target=MailServer\ findServer(java.lang.String)
+numComments=4

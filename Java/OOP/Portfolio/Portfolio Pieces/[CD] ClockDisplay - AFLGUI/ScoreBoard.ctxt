@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ScoreBoard()
+comment0.text=\r\n\ Instantiates\ the\ two\ ScoreDisplays,\ one\ for\ each\ team.\r\n
+comment1.params=
+comment1.target=java.lang.String\ getScores()
+comment1.text=\r\n\ Returns\ the\ scores\ of\ both\ teams,\ showing\ which\ side\ of\ the\ display\ is\ for\ the\ home\ team,\ and\ which\ for\ the\r\n\ away.\ Adds\ an\ asterisks\ next\ to\ the\ score\ of\ the\ team\ which\ is\ currently\ winning.\r\n\ @return\ The\ scores\ of\ both\ teams.\r\n
+comment2.params=
+comment2.target=void\ team1Goal()
+comment2.text=\r\n\ Simulates\ the\ scoring\ of\ a\ goal\ by\ the\ home\ team.\r\n
+comment3.params=
+comment3.target=void\ team2Goal()
+comment3.text=\r\n\ Simulates\ the\ scoring\ of\ a\ goal\ by\ the\ away\ team.\r\n
+comment4.params=
+comment4.target=void\ team1Behind()
+comment4.text=\r\n\ Simulates\ the\ scoring\ of\ a\ behind\ by\ the\ home\ team.\r\n
+comment5.params=
+comment5.target=void\ team2Behind()
+comment5.text=\r\n\ Simulates\ the\ scoring\ of\ a\ behind\ by\ the\ away\ team.\r\n
+numComments=6
