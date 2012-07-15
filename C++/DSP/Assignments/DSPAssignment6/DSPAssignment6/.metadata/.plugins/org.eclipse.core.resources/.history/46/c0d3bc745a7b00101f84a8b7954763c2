@@ -1,0 +1,23 @@
+/*
+ * main.cpp
+ *
+ *  Created on: May 11, 2011
+ *      Author: Charlotte
+ */
+
+void test1()
+{
+	DynamicStack<int> iStack;
+
+	iStack.push(1);
+	iStack.push(2);
+	iStack.push(3);
+	iStack.push(4);
+	iStack.push(5);
+	iStack.push(6);
+}
+
+int main()
+{
+	return 0;
+}

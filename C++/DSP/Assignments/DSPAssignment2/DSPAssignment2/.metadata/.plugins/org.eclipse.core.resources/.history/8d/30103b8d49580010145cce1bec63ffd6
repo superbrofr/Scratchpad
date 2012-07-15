@@ -1,0 +1,161 @@
+/*
+ * Vigenere.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+#include "Vigenere.h"
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <string.h>
+
+using namespace std;
+
+//	char fCharacterMap[26][26];
+//	std::string fKey;
+//	unsigned int fKeyIndex;
+//	int fSourceFrequency[26];
+//	int fTargetFrequency[26];
+//	int fTotalEncoded;
+
+Vigenere::Vigenere(char* aKey)
+{
+	fKeyIndex = 0;
+	//Go through each character in aKey, convert to uppercase if needed, remove whitespace and non-alphabetical characters
+	for(unsigned int i = 0; i < strlen(aKey); i++){
+		if((aKey[i] >= 'a') && (aKey[i] <= 'z')){
+			fKey += (aKey[i] - 32);
+		}
+		else if((aKey[i] >= 'A') && (aKey[i] <= 'Z')){
+			fKey += aKey[i];
+		}
+	}
+	//initialise character map
+	for(int i = 0; i < 26; i++){
+		for(int j = 0; j < 26; j++){
+			int nextChar = (int)'B' + i + j;
+			if((int)nextChar > (int)'Z'){
+				nextChar -=  26;
+			}
+			fCharacterMap[i][j] = (char)nextChar;
+		}
+	}
+	Vigenere::resetFrequencies();
+}
+
+void Vigenere::resetFrequencies()
+{
+	for(int i = 0; i < 26; i++){
+		fSourceFrequency[i] = 0;
+		fTargetFrequency[i] = 0;
+	}
+	fTotalEncoded = 0;
+}
+
+//Encode selected character - retains case
+char Vigenere::encode(char aCharacter)
+{
+	int returnChar;
+	fTotalEncoded++;
+	fSourceFrequency[((int)aCharacter - (int)'A')]++;
+
+	if((aCharacter >= 'A') && (aCharacter <= 'Z')){
+		int i = ((int)fKey[fKeyIndex] - (int)'A'); //so if character from cipher is 'A', index will be 0
+		int j = ((int)aCharacter - (int)'A'); //same as above
+		returnChar = fCharacterMap[i][j];
+
+		//increment fKeyIndex - wrap back around if necessary
+		fKeyIndex++;
+		if(fKeyIndex >= fKey.length()){
+			fKeyIndex = 0;
+		}
+	}
+	else if((aCharacter >= 'a') && (aCharacter <= 'z')){
+		int i = ((int)fKey[fKeyIndex] - (int)'A'); //so if character from cipher is 'A', index will be 0
+		int j = ((int)aCharacter - (int)'A' - 32); //same as above - minus extra 32 to get uppercase
+		returnChar = fCharacterMap[i][j] + 32; //add 32 to return to correct case
+
+		//increment fKeyIndex - wrap back around if necessary
+		fKeyIndex++;
+		if(fKeyIndex >= fKey.length()){
+			fKeyIndex = 0;
+		}
+	}
+	else{
+		returnChar = (int)aCharacter;
+	}
+
+	fTargetFrequency[((int)returnChar - (int)'A')]++;
+	return (char)returnChar;
+}
+
+//Decode the selected character - retains case
+char Vigenere::decode(char aCharacter)
+{
+	int returnChar;
+	if((aCharacter >= 'A') && (aCharacter <= 'Z')){
+		int i = ((int)fKey[fKeyIndex] - (int)'A');
+		//find character in column i and use that to infer j (the original character)
+		for(int j = 0; j < 26; j++){
+			if(fCharacterMap[i][j] == aCharacter){
+				returnChar = (j + (int)'A'); //character = index + 'A' (i.e. A = 0)
+			}
+		}
+
+		//increment fKeyIndex - wrap back around if necessary
+		fKeyIndex++;
+		if(fKeyIndex >= fKey.length()){
+			fKeyIndex = 0;
+		}
+	}
+	else if((aCharacter >= 'a') && (aCharacter <= 'z')){
+		int i = ((int)fKey[fKeyIndex] - (int)'A');
+		//find character in column i and use that to infer j (the original character)
+		for(int j = 0; j < 26; j++){
+			if(fCharacterMap[i][j] == (aCharacter - 32)){ //-32 to make uppercase
+				returnChar = (j + (int)'A' + 32); //character = index + 'A' (i.e. A = 0) //add 32 to make lowercase again
+			}
+		}
+
+		//increment fKeyIndex - wrap back around if necessary
+		fKeyIndex++;
+		if(fKeyIndex >= fKey.length()){
+			fKeyIndex = 0;
+		}
+	}
+	else{
+		returnChar = (int)aCharacter;
+	}
+
+	return (char)returnChar;
+}
+
+std::string Vigenere::encode(const std::string& aString)
+{
+	string returnString = "";
+	for(unsigned int i = 0; i < aString.length(); i++){
+		returnString += Vigenere::encode(aString[i]);
+	}
+	return returnString;
+}
+
+std::string Vigenere::decode(const std::string& aString)
+{
+	string returnString = "";
+	for(unsigned int i = 0; i < aString.length(); i++){
+		returnString += Vigenere::decode(aString[i]);
+	}
+	cout << "Returning String:" << returnString << endl;
+	return returnString;
+}
+
+std::ostream& operator<<(std::ostream& aOStream, const Vigenere& aScrambler)
+{
+	aOStream << "Frequency Distribution:" << endl << "Char:   ";
+	for(int i = 0; i < 26; i++){
+		aOStream << setw(4) << setfill(' ') << (char)(i + int)'A');
+	}
+	aOStream << endl << "Input:  "
+}

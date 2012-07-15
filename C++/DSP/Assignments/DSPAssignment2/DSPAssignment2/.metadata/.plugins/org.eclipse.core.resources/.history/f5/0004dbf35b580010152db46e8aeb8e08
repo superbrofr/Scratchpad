@@ -1,0 +1,14 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+#include "VigenereIndexer.h"
+
+int main()
+{
+
+	return 0;
+}

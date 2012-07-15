@@ -1,0 +1,19 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+#include "VigenereIndexer.h"
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#include <stdlib.h>
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+	Vigenere test(argv[2], true);
+}

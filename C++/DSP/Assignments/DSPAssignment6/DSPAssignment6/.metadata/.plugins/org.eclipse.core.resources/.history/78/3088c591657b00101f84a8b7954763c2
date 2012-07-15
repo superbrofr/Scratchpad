@@ -1,0 +1,78 @@
+/*
+ * DynamicStackIterator.h
+ *
+ *  Created on: May 11, 2011
+ *      Author: Charlotte
+ */
+
+#ifndef DYNAMICSTACKITERATOR_H_
+#define DYNAMICSTACKITERATOR_H_
+
+#include "DynamicStack.h"
+#include <iostream>
+
+template<class T>
+class DynamicStackIterator
+{
+private:
+	DynamicStack<T> fStack;
+	int fId;
+
+	static int IteratorId;
+
+public:
+	DynamicStackIterator(const DynamicStack<T>& aStack)
+	{
+		fStack = aStack;
+		IteratorId++;
+		fId = IteratorId;
+	}
+
+	const T& operator*() const // dereference
+	{
+		return fStack.top();
+	}
+
+	DynamicStackIterator& operator++() // prefix increment
+	{
+		fStack.pop();
+		return *this;
+	}
+
+	DynamicStackIterator operator++(int) // postfix increment
+	{
+		DynamicStackIterator tempIter = *this;
+		fStack.pop();
+		return tempIter;
+	}
+
+	bool operator==(const DynamicStackIterator& aOtherIter) const
+	{
+		if(fStack.isEmpty() && aOtherIter.fStack.isEmpty())
+			return (fId == aOtherIter.fId);
+		else if(fStack.size() != aOtherStack.fStack.size())
+			return false;
+		else
+			return ((fId == aOtherIter.fId) && (fStack.top() == aOtherIter.fStack.top()));
+	}
+
+	bool operator!=(const DynamicStackIterator& aOtherIter) const
+	{
+		return !(*this == aOtherIter);
+	}
+
+	DynamicStackIterator end() const // new iterator (after last element)
+	{
+		DynamicStackIterator returnIter = *this;
+
+		while(!returnIter.fStack.isEmpty()){
+			returnIter++;
+		}
+		return returnIter;
+	}
+};
+
+template<class T>
+int DynamicStackIterator<T>::IteratorId = 0;
+
+#endif /* DYNAMICSTACKITERATOR_H_ */

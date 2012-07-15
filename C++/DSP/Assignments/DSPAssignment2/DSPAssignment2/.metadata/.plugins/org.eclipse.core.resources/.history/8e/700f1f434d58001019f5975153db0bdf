@@ -1,0 +1,16 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+#include <Vigenere.h>
+#include <iostream>
+#include <fstream>
+
+int main(int argc, int argv[])
+{
+	ifstream lReader;
+	ofstream lWriter;
+}

@@ -1,0 +1,23 @@
+/*
+ * IStream12Bits.h
+ *
+ *  Created on: 2 Apr 2011
+ *      Author: charlie
+ */
+
+#ifndef ISTREAM12BITS_H_
+#define ISTREAM12BITS_H_
+
+typedef unsigned char byte;
+#include <fstream>
+
+class IStream12Bits
+{
+private:
+	std::ifstream fIStream;
+	byte fBuffer[32];
+
+public:
+};
+
+#endif /* ISTREAM12BITS_H_ */

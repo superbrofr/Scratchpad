@@ -1,0 +1,44 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+#include "VigenereIndexer.h"
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#include <stdlib.h>
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+	ifstream lReader;
+	ofstream lWriter;
+	bool lMode;
+
+	if(argc != 4){
+		cout << "Invalid arguments!" << endl;
+		cout << "Execution: VigenereIndexer encode/decode key fileToUse.txt" << endl;
+	}
+	//find mode
+	if(argv[1] == "encode"){
+		lMode = true;
+	}
+	else if(argv[1] == "decode"){
+		lMode = false;
+	}
+	else{
+		cout << "Invalid mode! Mode must be 'encode' or 'decode'" << endl;
+		exit(1);
+	}
+
+	//create and open files
+	lReader.open(argv[3]);
+
+	//create indexer
+
+	return 0;
+}

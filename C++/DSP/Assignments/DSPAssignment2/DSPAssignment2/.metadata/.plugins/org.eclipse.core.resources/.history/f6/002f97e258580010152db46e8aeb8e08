@@ -1,0 +1,12 @@
+/*
+ * VigenereIndexer.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+//	Vigenere fCipher;
+	//bool fMode;
+
+#include "VigenereIndexer.h"
+

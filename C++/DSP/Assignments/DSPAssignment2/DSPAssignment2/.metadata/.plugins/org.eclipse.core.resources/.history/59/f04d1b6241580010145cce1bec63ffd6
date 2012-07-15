@@ -1,0 +1,32 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+#include <Vigenere.h>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	Vigenere* test = new Vigenere("too many secrets");
+
+	ifstream lReader;
+	ofstream lWriter;
+
+	lReader.open("sample.txt");
+	lWriter.open("sample.txt.secure.txt");
+
+	if(lReader.is_open() && lWriter.is_open()){
+		cout << "Both open" << endl;
+	}
+
+	lReader.close();
+	lWriter.close();
+
+	return 0;
+}

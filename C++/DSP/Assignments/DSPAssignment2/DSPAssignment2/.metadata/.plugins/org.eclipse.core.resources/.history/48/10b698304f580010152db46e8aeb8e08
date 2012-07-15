@@ -1,0 +1,35 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+#include <Vigenere.h>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	Vigenere* lScrambler = new Vigenere("too many secrets");
+
+	ifstream lReader;
+	ofstream lWriter;
+	string lLine;
+
+	lReader.open("sample.txt");
+	lWriter.open("sample.txt.secure.txt");
+
+	while(getline(lReader, lLine)){
+		lWriter << lScrambler->encode(lLine);
+	}
+
+	cout << lScrambler;
+
+	lReader.close();
+	lWriter.close();
+
+	return 0;
+}

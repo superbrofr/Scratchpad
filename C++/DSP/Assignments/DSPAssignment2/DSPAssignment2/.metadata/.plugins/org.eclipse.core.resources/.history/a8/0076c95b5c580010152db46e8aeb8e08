@@ -1,0 +1,23 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+#include "VigenereIndexer.h"
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	VigenereIndexer lScrambler("too many secrets", false);
+
+	cout << lScrambler['u'];
+	cout << lScrambler['r'];
+	cout << lScrambler['i'];
+	cout << lScrambler[' '];
+	cout << lScrambler['V'];
+	return 0;
+}

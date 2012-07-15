@@ -1,0 +1,21 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+#include "VigenereIndexer.h"
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+	if(argc != 4){
+		cout << "Invalid arguments!" << endl;
+		cout << "Execution: VigenereIndexer encode/decode key fileToUse.txt" << endl;
+	}
+
+	return 0;
+}

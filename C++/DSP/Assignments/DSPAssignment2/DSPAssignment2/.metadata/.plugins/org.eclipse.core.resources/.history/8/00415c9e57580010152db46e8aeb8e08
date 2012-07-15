@@ -1,0 +1,13 @@
+/*
+ * VigenereIndexer.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+//	Vigenere fCipher;
+	//bool fMode;
+
+Vigenere::VigenereIndexer(char* aKey, bool aMode);
+char Vigenere::operator[](const char aChar);
+std::ostream& Vigenere::operator<<(std::ostream& aOStream, const VigenereIndexer& aIndexer);

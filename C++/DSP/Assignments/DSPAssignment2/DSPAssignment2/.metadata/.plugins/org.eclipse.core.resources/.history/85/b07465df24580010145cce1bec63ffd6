@@ -1,0 +1,28 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+#include <Vigenere.h>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	Vigenere* test = new Vigenere("too many secrets");
+
+	ifstream testReader;
+	testReader.open("sample.txt");
+
+	string lLine;
+
+	while(testReader.good()){
+		lLine = testReader.get();
+		cout << test->encode(lLine);
+	}
+	return 0;
+}

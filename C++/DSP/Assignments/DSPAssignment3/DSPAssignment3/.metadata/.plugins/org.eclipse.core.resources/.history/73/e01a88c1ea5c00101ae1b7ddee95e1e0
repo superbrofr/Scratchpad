@@ -1,0 +1,69 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 2 Apr 2011
+ *      Author: charlie
+ */
+#include "OStream12Bits.h"
+#include "IStream12Bits.h"
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+void write4096()
+{
+	cout << "Write 4096 codes" << endl;
+
+	OStream12Bits lWriter;
+
+	lWriter.open("sample.lzw");
+	if(lWriter.fail()){
+		cerr << "Error: Unable to open output file!" << endl;
+		exit(1);
+	}
+
+	for(int i = 4095; i >= 0; i--){
+		lWriter << i;
+	}
+
+	lWriter.close();
+}
+
+void read4096()
+{
+	cout << "Read 4096 codes" << endl;
+
+	IStream12Bits lInput;
+
+	lInput.open("sample.lzw");
+	if(lInput.fail()){
+		cerr << "Error: Unable to open input file!" << endl;
+		exit(2);
+	}
+
+	for(int i = 4095; i >= 0; i--){
+		int code;
+		lInput >> code;
+
+		if(code != i){
+			cerr << "Error: Code mismatch: " << code << " != " << i << endl;
+			exit(3);
+		}
+	}
+
+	if(!lInput.eof()){
+		cerr << "Error: Input stream not exhausted!" << endl;
+	}
+
+	lInput.close();
+}
+
+int main()
+{
+	//write4096();
+	read4096();
+	cout << "SUCCESS" << endl;
+	cout << 1 % 2 << endl;
+	return 0;
+}

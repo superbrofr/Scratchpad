@@ -1,0 +1,44 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.update.core,3.2.402.R36x_v20100629,"org.eclipse.update.core",1301131540539
+started,bundle,org.eclipse.update.scheduler,3.2.300.v20100512,"org.eclipse.update.scheduler",1301131540540
+os,sysinfo,,,"win32",1301131540543
+arch,sysinfo,,,"x86",1301131540543
+ws,sysinfo,,,"win32",1301131540543
+locale,sysinfo,,,"en_GB",1301131540543
+processors,sysinfo,,,"3",1301131540543
+java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1301131540543
+java.runtime.version,sysinfo,,,"1.6.0_23-b05",1301131540543
+java.specification.name,sysinfo,,,"Java Platform API Specification",1301131540543
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1301131540543
+java.specification.version,sysinfo,,,"1.6",1301131540543
+java.vendor,sysinfo,,,"Sun Microsystems Inc.",1301131540543
+java.version,sysinfo,,,"1.6.0_23",1301131540543
+java.vm.info,sysinfo,,,"mixed mode, sharing",1301131540543
+java.vm.name,sysinfo,,,"Java HotSpot(TM) Client VM",1301131540543
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1301131540543
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1301131540543
+java.vm.specification.version,sysinfo,,,"1.0",1301131540543
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1301131540543
+java.vm.version,sysinfo,,,"19.0-b09",1301131540543
+opened,editor,org.eclipse.cdt.ui,5.2.2.201102110609,"org.eclipse.cdt.ui.editor.CEditor",1301131558401
+activated,editor,org.eclipse.cdt.ui,5.2.2.201102110609,"org.eclipse.cdt.ui.editor.CEditor",1301131558472
+activated,editor,org.eclipse.cdt.ui,5.2.2.201102110609,"org.eclipse.cdt.ui.editor.CEditor",1301131571678
+opened,editor,org.eclipse.cdt.ui,5.2.2.201102110609,"org.eclipse.cdt.ui.editor.CEditor",1301131573345
+activated,editor,org.eclipse.cdt.ui,5.2.2.201102110609,"org.eclipse.cdt.ui.editor.CEditor",1301131573403
+activated,editor,org.eclipse.cdt.ui,5.2.2.201102110609,"org.eclipse.cdt.ui.editor.CEditor",1301131582422
+started,bundle,org.eclipse.cdt.mylyn.ui,1.1.4.v20110204-0100-e3x,"org.eclipse.cdt.mylyn.ui",1301131599906
+closed,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1301131599979
+started,bundle,org.eclipse.compare,3.5.101.R36x_v20100929-0800,"org.eclipse.compare",1301131600476
+stopped,bundle,org.eclipse.cdt.debug.mi.ui,6.1.0.201102110609,"org.eclipse.cdt.debug.mi.ui",1301131600571
+stopped,bundle,org.eclipse.cdt.debug.mi.core,7.0.1.201102110609,"org.eclipse.cdt.debug.mi.core",1301131600573
+stopped,bundle,org.eclipse.cdt.debug.ui.memory.memorybrowser,1.2.1.201102110609,"org.eclipse.cdt.debug.ui.memory.memorybrowser",1301131600574
+stopped,bundle,org.eclipse.cdt.debug.ui.memory.search,1.2.0.201102110609,"org.eclipse.cdt.debug.ui.memory.search",1301131600575
+stopped,bundle,org.eclipse.cdt.dsf.gdb.ui,2.1.0.201102110609,"org.eclipse.cdt.dsf.gdb.ui",1301131600580
+stopped,bundle,org.eclipse.cdt.dsf.ui,2.1.2.201102110609,"org.eclipse.cdt.dsf.ui",1301131600582
+stopped,bundle,org.eclipse.cdt.gdb.ui,7.0.0.201102110609,"org.eclipse.cdt.gdb.ui",1301131600583
+stopped,bundle,org.eclipse.cdt.dsf.gdb,3.0.0.201102110609,"org.eclipse.cdt.dsf.gdb",1301131600584
+stopped,bundle,org.eclipse.cdt.launch,6.1.0.201102110609,"org.eclipse.cdt.launch",1301131600585
+stopped,bundle,org.eclipse.cdt.debug.ui,7.0.0.201102110609,"org.eclipse.cdt.debug.ui",1301131600585
+stopped,bundle,org.eclipse.cdt.debug.ui.memory.traditional,1.2.0.201102110609,"org.eclipse.cdt.debug.ui.memory.traditional",1301131600586
+stopped,bundle,org.eclipse.cdt.dsf,2.1.1.201102110609,"org.eclipse.cdt.dsf",1301131600587
+stopped,bundle,org.eclipse.cdt.debug.core,7.0.0.201102110609,"org.eclipse.cdt.debug.core",1301131600589

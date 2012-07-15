@@ -1,0 +1,176 @@
+/*
+ * List.h
+ *
+ *  Created on: May 11, 2011
+ *      Author: Charlotte
+ */
+
+#ifndef LIST_H_
+#define LIST_H_
+
+#include "DoubleLinkedNode.h"
+#include "NodeIterator.h"
+#include <stdexcept>
+
+template<class T>
+class List
+{
+private:
+	typedef DoubleLinkedNode<T> Value;
+	typedef DoubleLinkedNode<T>* ListImpl;
+
+	ListImpl fTop; //leftmost element
+	ListImpl fLast; //rightmost element
+	int fCount; //number of nodes
+
+public:
+	typedef NodeIterator<T> ListIterator;
+
+	List()//list constructor
+	{
+		fTop = &Value::NIL;
+		fLast = &Value::NIL;
+		fCount = 0;
+	}
+
+	List(const List& aOtherList) //list copy constructor
+	{
+		fTop = &Value::NIL;
+		fLast = &Value::NIL;
+		for(ListIterator iter = aOtherList.begin(); iter != aOtherList.end(); iter++)
+			add(*iter);
+	}
+
+	~List() //list deconstructor
+	{
+		while(fTop != &Value::NIL)
+			dropFirst();
+	}
+
+	List& operator=(const List& aOtherList) //list assignment operator
+	{
+		//delete old nodes
+		while(fTop != &Value::NIL)
+			dropFirst();
+		//get new nodes
+		for(ListIterator iter = aOtherList.begin(); iter != aOtherList.end(); iter++)
+			add(*iter);
+
+		return *this;
+	}
+
+	bool isEmpty() const //empty list predicate
+	{
+		return fCount == 0;
+	}
+
+	int size() const //get number of nodes
+	{
+		return fCount;
+	}
+
+	void add(const T& aElement) //add element at end
+	{
+		ListImpl newNode = new Value(aElement);
+		if(fCount == 0){
+			fTop = newNode;
+			fLast = newNode;
+		}
+		else{
+			fLast->insertNode(*newNode);
+			fLast = newNode;
+		}
+		fCount++;
+	}
+
+	void addFirst(const T& aElement)//add element at top
+	{
+		ListImpl newNode = new Value(aElement);
+		if(fCount == 0){
+			fTop = newNode;
+			fLast = newNode;
+		}
+		else{
+			fTop->prependNode(*newNode);
+			fTop = newNode;
+		}
+		fCount++;
+	}
+
+	bool drop(const T& aElement) //delete matching element
+	{
+		if(fCount > 0){
+			for(ListImpl curr = fTop; curr != &Value::NIL; curr = &curr->getNext()){
+				if(curr->getValue() == aElement){
+					ListImpl currPrevious = &curr->getPrevious();
+					ListImpl currNext = &curr->getNext();
+					if(fTop == curr)
+						fTop = currNext;
+					if(fLast == curr)
+						fLast = currPrevious;
+
+					curr->dropNode();
+					delete curr;
+					fCount--;
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	void dropFirst() //delete first node
+	{
+		if(fCount > 0){
+			ListImpl newTop = &fTop->getNext();
+			fTop->dropNode();
+			delete fTop;
+			fCount--;
+			fTop = newTop;
+
+			if(fTop == &Value::NIL)
+				fLast = &Value::NIL;
+		}
+	}
+
+	void dropLast() //delete last node
+	{
+		if(fCount > 0){
+			ListImpl newLast = &fLast->getPrevious();
+			fLast->dropNode();
+			delete fLast;
+			fCount--;
+			fLast = newLast;
+
+			if(fLast == &Value::NIL)
+				fTop = &Value::NIL;
+		}
+	}
+
+	const T& operator[](int aIndex) const //list indexer
+	{
+		ListImpl curr = fTop;
+		if((aIndex >= 0) && (aIndex < size())){
+			curr = fTop;
+			while(aIndex--)
+				curr = &curr->getNext();
+
+			return curr->getValue();
+		}
+		else{
+			throw std::out_of_range("Out of range index!");
+		}
+	}
+
+	ListIterator begin() const //list iterator
+	{
+		return ListIterator(*fTop);
+	}
+
+	ListIterator end() const //list iterator
+	{
+		return ListIterator(*fTop).end();
+	}
+};
+
+#endif /* LIST_H_ */

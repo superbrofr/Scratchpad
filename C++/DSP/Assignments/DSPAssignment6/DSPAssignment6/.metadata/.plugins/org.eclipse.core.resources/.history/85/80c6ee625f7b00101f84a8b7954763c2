@@ -1,0 +1,57 @@
+/*
+ * DynamicStackIterator.h
+ *
+ *  Created on: May 11, 2011
+ *      Author: Charlotte
+ */
+
+#ifndef DYNAMICSTACKITERATOR_H_
+#define DYNAMICSTACKITERATOR_H_
+
+#include "DynamicStack.h"
+
+template<class T>
+class DynamicStackIterator
+{
+private:
+	DynamicStack<T> fStack;
+	int fId;
+
+	static int IteratorId = 0;
+
+public:
+	DynamicStackIterator(const DynamicStack<T>& aStack)
+	{
+		fStack = aStack;
+		fId = ++IteratorId;
+	}
+
+	const T& operator*() const // dereference
+	{
+		return fStack.top();
+	}
+
+	DynamicStackIterator& operator++() // prefix increment
+	{
+		DynamicStackIterator tempIter = this;
+		fStack.pop();
+		return tempIter;
+	}
+
+	DynamicStackIterator operator++(int) // postfix increment
+	{
+
+	}
+
+	bool operator==(const DynamicStackIterator& aOtherIter) const
+	{
+
+	}
+
+	bool operator!=(const DynamicStackIterator& aOtherIter) const
+	{
+
+	}
+};
+
+#endif /* DYNAMICSTACKITERATOR_H_ */

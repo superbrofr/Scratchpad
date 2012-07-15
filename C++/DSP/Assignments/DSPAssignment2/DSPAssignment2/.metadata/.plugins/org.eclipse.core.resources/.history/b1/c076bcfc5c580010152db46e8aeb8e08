@@ -1,0 +1,33 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+#include "VigenereIndexer.h"
+#include <iostream>
+#include <fstream>
+#include <string.h>
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+	ifstream lReader;
+	ofstream lWriter;
+	bool lMode;
+
+	if(argc != 4){
+		cout << "Invalid arguments!" << endl;
+		cout << "Execution: VigenereIndexer encode/decode key fileToUse.txt" << endl;
+	}
+	//find mode
+
+	//create and open files
+	lReader.open(argv[3]);
+
+	//create indexer
+
+	return 0;
+}

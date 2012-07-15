@@ -1,0 +1,31 @@
+/*
+ * Vigenere.h
+ *
+ *  Created on: Mar 27, 2011
+ *      Author: Charlotte
+ */
+
+#ifndef VIGENERE_H_
+#define VIGENERE_H_
+
+#include <string>
+class Vigenere
+{
+private:
+	char fCharacterMap[26][26];
+	std::string fKey;
+	unsigned int fKeyIndex;
+	int fSourceFrequency[26];
+	int fTargetFrequency[26];
+	int fTotalEncoded;
+public:
+	Vigenere(char* aKey);
+	void resetFrequencies();
+	char encode(char aCharacter);
+	char decode(char aCharacter);
+	std::string encode(const std::string& aString);
+	std::string decode(const std::string& aString);
+	friend std::ostream& operator<<(std::ostream& aOStream, const Vigenere& aScrambler);
+};
+
+#endif /* VIGENERE_H_ */

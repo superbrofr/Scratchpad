@@ -1,0 +1,13 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 2 Apr 2011
+ *      Author: charlie
+ */
+
+using namespace std;
+
+int main()
+{
+	return 0;
+}

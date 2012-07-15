@@ -1,0 +1,47 @@
+/*
+ * DynamicStack.h
+ *
+ *  Created on: May 11, 2011
+ *      Author: Charlotte
+ */
+
+#ifndef DYNAMICSTACK_H_
+#define DYNAMICSTACK_H_
+
+#include "List.h"
+#include <stdexcept>
+
+template<class T>
+class DynamicStack
+{
+private:
+	List<T> fElements;
+
+public:
+	bool isEmpty() const
+	{
+		return fElements.isEmpty();
+	}
+
+	int size() const
+	{
+		return fElements.size();
+	}
+
+	void push(const T& aItem)
+	{
+		fElements.addFirst(aItem);
+	}
+
+	void pop()
+	{
+		fElements.dropFirst();
+	}
+
+	const T& top() const
+	{
+		return fElements[0];
+	}
+};
+
+#endif /* DYNAMICSTACK_H_ */
