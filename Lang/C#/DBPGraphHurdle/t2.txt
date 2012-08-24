@@ -1,0 +1,3 @@
+C,ClassA,1,ClassB
+C,ClassB,1,ClassC
+A,ClassC,1,ClassA

@@ -1,0 +1,92 @@
+/*
+ * DynamicQueueIterator.h
+ *
+ *  Created on: 13 May 2011
+ *      Author: charlie
+ */
+
+#ifndef DYNAMICQUEUEITERATOR_H_
+#define DYNAMICQUEUEITERATOR_H_
+
+#include "DynamicQueue.h"
+
+#include <iostream>
+
+template<class T>
+class DynamicQueueIterator
+{
+private:
+	DynamicQueue<T> fQueue;
+	const T* fCurrentElement;
+	bool fMustDequeue;
+	int fId;
+
+	static int IteratorId;
+
+public:
+	DynamicQueueIterator(const DynamicQueue<T>& aQueue)
+	{
+		fQueue = aQueue;
+		IteratorId++;
+		fId = IteratorId;
+		fMustDequeue = true;
+	}
+
+	const T* operator*() // dereference
+	{
+		if(fMustDequeue){
+			fCurrentElement = &fQueue.dequeue();
+			fMustDequeue = false;
+		}
+		else{
+			return fCurrentElement;
+		}
+	}
+
+	DynamicQueueIterator& operator++() // prefix increment
+	{
+		fMustDequeue = true;
+	}
+
+	DynamicQueueIterator operator++(int) // postfix increment
+	{
+		DynamicQueueIterator tempIter = *this;
+		fMustDequeue = true;
+		return tempIter;
+	}
+
+	bool operator==(const DynamicQueueIterator& aOtherIter) const
+	{
+		if(fQueue.isEmpty() && aOtherIter.fQueue.isEmpty()){
+			return (fId == aOtherIter.fId);
+		}
+		else if(fQueue.size() != aOtherIter.fQueue.size()){
+			return false;
+		}
+		else{
+			return (fId == aOtherIter.fId) && (fCurrentElement == aOtherIter.fCurrentElement) && (fMustDequeue == aOtherIter.fMustDequeue);
+		}
+	}
+
+	bool operator!=(const DynamicQueueIterator& aOtherIter) const
+	{
+		return !(*this == aOtherIter);
+	}
+
+	DynamicQueueIterator end() const //new iterator (after last element)
+	{
+		DynamicQueueIterator returnIter = *this;
+
+		while(!returnIter.fQueue.isEmpty()){
+			//std::cout << "BL:ASKD" << std::endl;
+			std::cout << "Size: " << returnIter.fQueue.size() << std::endl;
+			++returnIter;
+		}
+		return returnIter;
+	}
+};
+
+template<class T>
+int DynamicQueueIterator<T>::IteratorId = 0;
+
+#endif /* DYNAMICQUEUEITERATOR_H_ */

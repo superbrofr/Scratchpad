@@ -1,0 +1,266 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 8 May 2011
+ *      Author: charlie
+ */
+
+#include "DoubleLinkedNode.h"
+#include "NodeIterator.h"
+#include "List.h"
+#include <iostream>
+
+using namespace std;
+
+void testDoubleLinkedNodes()
+{
+	string s1("One");
+	string s2("Two");
+	string s3("Three");
+
+	typedef DoubleLinkedNode<string>::Node StringNode;
+
+	StringNode n1(s1);
+	StringNode n2(s2);
+	StringNode n3(s3);
+
+	n3.prependNode(n2);
+	n2.prependNode(n1);
+
+	cout << "Three elements:" << endl;
+
+	for(StringNode* pn = &n1; pn != &StringNode::NIL; pn = &pn->getNext()){
+		cout << "(";
+
+		if(&pn->getPrevious() != &StringNode::NIL)
+			cout << pn->getPrevious().getValue();
+		else
+			cout << "<NULL>";
+
+		cout << "," << pn->getValue() << ",";
+
+		if(&pn->getNext() != &StringNode::NIL)
+			cout << pn->getNext().getValue();
+		else
+			cout << "<NULL>";
+
+		cout << ")" << endl;
+	}
+
+	n1.getNext().dropNode();
+
+	cout << "Two elements:" << endl;
+
+	for(StringNode* pn = &n1; pn != &StringNode::NIL; pn = &pn->getNext()){
+		cout << "(";
+
+		if(&pn->getPrevious() != &StringNode::NIL)
+			cout << pn->getPrevious().getValue();
+		else
+			cout << "<NULL>";
+
+		cout << "," << pn->getValue() << ",";
+
+		if(&pn->getNext() != &StringNode::NIL)
+			cout << pn->getNext().getValue();
+		else
+			cout << "<NULL>";
+
+		cout << ")" << endl;
+	}
+}
+
+void testList2A()
+{
+	string s1("One");
+	string s2("Two");
+	string s3("Three");
+	string s4("Four");
+
+	List<string> l;
+
+	l.add(s1);
+	l.add(s2);
+	l.add(s3);
+	l.add(s4);
+
+	cout << "Forward:" << endl;
+	List<string>::ListIterator testIter = l.begin();
+	cout << *testIter << endl;
+	/*for(List<string>::ListIterator iter = l.begin(); iter != iter.end(); iter++){
+		cout << *iter << endl;
+	}
+
+	cout << "Backward:" << endl;
+	for(List<string>::ListIterator iter = l.end(); iter != iter.begin(); iter--){ //SHOULD BE iter != iter.begin() ; --iter????
+		cout << *iter << endl;
+	}*/
+}
+
+void testList2B()
+{
+	string s1("One");
+	string s2("Two");
+	string s3("Three");
+
+	List<string> l;
+
+	l.addFirst(s1);
+	l.addFirst(s2);
+	l.addFirst(s3);
+
+	cout << "Three elements:" << endl;
+	for(List<string>::ListIterator iter = l.begin(); iter != iter.end(); iter++){
+		cout << *iter << endl;
+	}
+
+	l.drop(s2);
+
+	cout << "Two elements:" << endl;
+	for(List<string>::ListIterator iter = l.begin(); iter != iter.end(); iter++){
+		cout << *iter << endl;
+	}
+}
+
+void testList2C()
+{
+	string s1("One");
+	string s2("Two");
+	string s3("Three");
+
+	List<string> l;
+
+	l.addFirst(s1);
+	l.addFirst(s2);
+	l.addFirst(s3);
+
+	cout << "Three elements:" << endl;
+	for(List<string>::ListIterator iter = l.begin(); iter != iter.end(); iter++){
+		cout << *iter << endl;
+	}
+
+	l.dropFirst();
+
+	cout << "Two elements:" << endl;
+	for(List<string>::ListIterator iter = l.begin(); iter != iter.end(); iter++){
+		cout << *iter << endl;
+	}
+}
+
+void testList2D()
+{
+	string s1("One");
+	string s2("Two");
+	string s3("Three");
+
+	List<string> l;
+
+	l.addFirst(s1);
+	l.addFirst(s2);
+	l.addFirst(s3);
+
+	cout << "Three elements:" << endl;
+	for(List<string>::ListIterator iter = l.begin(); iter != iter.end(); iter++){
+		cout << *iter << endl;
+	}
+
+	l.dropLast();
+
+	cout << "Two elements:" << endl;
+	for(List<string>::ListIterator iter = l.begin(); iter != iter.end(); iter++){
+		cout << *iter << endl;
+	}
+}
+
+void testList2E()
+{
+	string s1("One");
+	string s2("Two");
+	string s3("Three");
+
+	List<string> l;
+
+	l.addFirst(s1);
+	l.addFirst(s2);
+	l.addFirst(s3);
+
+	cout << "Two elements:" << endl;
+	l.dropFirst();
+	for(List<string>::ListIterator iter = l.begin(); iter != iter.end(); iter++){
+		cout << *iter << endl;
+	}
+
+	l.dropLast();
+	l.dropFirst();
+	l.add(s2);
+
+	cout << "One element:" << endl;
+	for(List<string>::ListIterator iter = l.begin(); iter != iter.end(); iter++){
+		cout << *iter << endl;
+	}
+}
+
+void testList2F()
+{
+	string s1("One");
+	string s2("Two");
+	string s3("Three");
+
+	List<string> l;
+
+	l.addFirst(s1);
+	l.addFirst(s2);
+	l.addFirst(s3);
+
+	cout << "To:" << endl;
+	for(int i = 0; i < l.size(); i++){
+		cout << l[i] << endl;
+	}
+
+	cout << "Down:" << endl;
+	for(int i = l.size() - 1; i >= 0; i--){
+		cout << l[i] << endl;
+	}
+}
+
+void testList2G()
+{
+	string s1("One");
+	string s2("Two");
+	string s3("Three");
+	string s4("Four");
+
+	List<string> l;
+
+	l.add(s1);
+	l.add(s2);
+	l.add(s3);
+	l.add(s4);
+
+	cout << "Forward:" << endl;
+	List<string> cp = l;
+	for(List<string>::ListIterator iter = cp.begin(); iter != iter.end(); iter++){
+		cout << *iter << endl;
+	}
+
+	l = cp;
+
+	cout << "Backward:" << endl;
+	for(List<string>::ListIterator iter = l.end(); iter != iter.begin(); iter--){
+		cout << *iter << endl;
+	}
+}
+
+int main()
+{
+	//testDoubleLinkedNodes();
+	testList2A();
+	/*testList2B();
+	testList2C();
+	testList2D();
+	testList2E();
+	testList2F();
+	testList2G();*/
+
+	return 0;
+}

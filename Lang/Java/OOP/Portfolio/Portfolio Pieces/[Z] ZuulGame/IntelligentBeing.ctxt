@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=strength\ health
+comment0.target=IntelligentBeing(int,\ double)
+comment1.params=
+comment1.target=int\ getStrength()
+comment1.text=\r\n\ Returns\ the\ being's\ strength.\r\n\ @return\ The\ being's\ strength.\r\n
+comment2.params=
+comment2.target=double\ getHealth()
+comment2.text=\r\n\ Returns\ the\ being's\ current\ health.\r\n\ @return\ The\ being's\ current\ health.\r\n
+comment3.params=hp
+comment3.target=void\ setHealth(double)
+comment3.text=\r\n\ Set\ the\ health\ of\ the\ being.\r\n\ @param\ hp\ Health\ value\ to\ assign.\r\n
+comment4.params=howMuch
+comment4.target=void\ getHit(double)
+comment4.text=\r\n\ Being\ gets\ 'hit'\ with\ the\ specified\ strength.\ Health\ goes\ down\ by\ that\ strength\ value.\r\n\ @param\ strength\ Strength\ hit\ with.\r\n
+comment5.params=howMuch
+comment5.target=void\ addHealth(double)
+comment5.text=\r\n\ Adds\ a\ certain\ amount\ of\ health\ to\ the\ being's\ current\ health.\r\n\ @param\ howMuch\ The\ amount\ of\ health\ points\ to\ add.\r\n
+comment6.params=
+comment6.target=double\ getAttackStr()
+comment6.text=\r\n\ Calculates\ and\ returns\ the\ strength\ of\ the\ being's\ attack.\r\n\ @return\ The\ being's\ attack\ strength.\r\n
+numComments=7

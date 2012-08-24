@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=name\ strength\ health
+comment0.target=Monster(java.lang.String,\ int,\ double)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Monster.\r\n\ @param\ name\ The\ name\ of\ the\ monster.\r\n\ @param\ strength\ The\ strength\ of\ the\ monster.\r\n\ @param\ health\ The\ health\ of\ the\ monster.\r\n
+comment1.params=
+comment1.target=java.lang.String\ getDescription()
+comment1.text=\r\n\ Returns\ a\ string\ representing\ a\ description\ of\ the\ monster.\r\n\ @return\ A\ description\ of\ the\ monster.\r\n
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment2.text=\r\n\ Returns\ the\ monsters\ name.\r\n\ @return\ The\ monsters'\ name.\r\n
+comment3.params=
+comment3.target=double\ getAttackStr()
+comment3.text=\r\n\ Calculates\ and\ returns\ the\ strength\ of\ the\ monster's\ attack.\r\n\ @return\ The\ monster's\ attack\ strength.\r\n
+numComments=4

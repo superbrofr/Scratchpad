@@ -1,0 +1,19 @@
+/*
+ * OStream12Bits.cpp
+ *
+ *  Created on: 2 Apr 2011
+ *      Author: charlie
+ */
+#include "OStream12Bits.h"
+
+OStream12Bits::OStream12Bits()
+{
+	init();
+}
+
+OStream12Bits::OStream12Bits(const char* aFileName)
+{
+	init();
+	open(aFileName);
+}
+

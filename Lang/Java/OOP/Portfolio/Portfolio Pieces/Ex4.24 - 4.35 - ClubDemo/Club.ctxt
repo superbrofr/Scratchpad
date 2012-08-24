@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Club()
+comment1.params=member
+comment1.target=void\ join(Membership)
+comment2.params=
+comment2.target=int\ numberOfMembers()
+comment3.params=month
+comment3.target=int\ joinedInMonth(int)
+comment3.text=Determine\ the\ number\ of\ members\ who\ joined\ in\ the\r\ngiven\ month.\r\n@param\ month\ The\ month\ we\ are\ interested\ in.\r\n@return\ The\ number\ of\ members\ joinng\ in\ month\r\n
+comment4.params=month\ year
+comment4.target=java.util.ArrayList\ purge(int,\ int)
+comment4.text=\ Remove\ from\ the\ club's\ collection\ all\ members\ who\r\n\ joined\ in\ the\ given\ month,\ and\ return\ them\ stored\ \r\n\ in\ a\ \ separate\ collection\ object.\r\n\ @param\ month\ The\ month\ of\ the\ Membership.\r\n\ @param\ year\ The\ year\ of\ the\ Membership.\r\n\ @return\ The\ members\ who\ joined\ in\ the\ given\ month\ and\ year.\r\n
+numComments=5

@@ -1,0 +1,13 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 20 Mar 2011
+ *      Author: charlie
+ */
+
+#include "HexDump.h"
+
+int main(int argc, char* argv[])
+{
+	return 0;
+}

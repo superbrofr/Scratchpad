@@ -1,0 +1,40 @@
+/*
+ * OStream12Bits.cpp
+ *
+ *  Created on: 2 Apr 2011
+ *      Author: charlie
+ */
+#include "OStream12Bits.h"
+
+OStream12Bits::OStream12Bits()
+{
+	init();
+}
+
+OStream12Bits::OStream12Bits(const char* aFileName)
+{
+	init();
+	open(aFileName);
+}
+
+void OStream12Bits::init()
+{
+	for(int i = 0; i < 32; i++){
+		fBuffer[i] = 0;
+	}
+	fByteIndex = 0;
+	fBitIndex = 8;
+}
+
+void OStream12Bits::writeBit0()
+{
+	fBitIndex--;
+	finishWriteBit();
+}
+
+void OStream12Bits::writeBit1()
+{
+	fBuffer[fByteIndex] += 1 << (fBitIndex - 1); //switches endianness, because input is little-endian (output needs to be big-endian for writer to interpret)
+	fBitIndex--;
+	finishWriteBit();
+}

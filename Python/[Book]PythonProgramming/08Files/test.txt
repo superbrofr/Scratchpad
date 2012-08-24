@@ -1,5 +1,0 @@
-I am a text file!
-Second line
-Third line
-Fourth line
-Fifth line

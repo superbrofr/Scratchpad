@@ -1,0 +1,16 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 20 Mar 2011
+ *      Author: charlie
+ */
+
+#include "HexDump.h"
+
+int main(int argc, char* argv[])
+{
+	HexDump* test = new HexDump();
+	test->open("hello.txt");
+
+	return 0;
+}

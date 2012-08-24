@@ -1,0 +1,30 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 20 Mar 2011
+ *      Author: charlie
+ */
+
+#include "HexDump.h"
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+	HexDump* dumper = new HexDump();
+
+	if(argc < 2){
+		cout << "No argument given!" << endl;
+		exit(1);
+	}
+	else
+	{
+		dumper->open(argv[1]);
+		dumper->run();
+	}
+
+	dumper->close();
+	return 0;
+}

@@ -1,0 +1,106 @@
+/*
+ * IStream12Bits.cpp
+ *
+ *  Created on: 2 Apr 2011
+ *      Author: charlie
+ */
+
+#include "IStream12Bits.h"
+#include <iostream>
+
+using namespace std;
+
+IStream12Bits::IStream12Bits()
+{
+	fByteCount = 0; //start at first entry in the buffer
+};
+
+IStream12Bits::IStream12Bits(const char* aFileName)
+{
+	fByteCount = 0;
+	open(aFileName);
+}
+
+void IStream12Bits::open(const char* aFileName)
+{
+	fIStream.open(aFileName, ifstream::binary);
+	reload();
+}
+
+//Fills input buffer with the next bytes to be read
+//resets variables for reading
+void IStream12Bits::reload()
+{
+	if(fIStream.is_open()){
+		for(int i = 0; i < 32; i++){
+			if(!IStream12Bits::eof()){
+				fBuffer[i] = fIStream.get();
+			}
+		}
+	}
+	fByteCount = 0;
+}
+
+//Transforms bits stored in little-endian format yielding an integer of 12 bits
+int IStream12Bits::fetchCode()
+{
+	//read 12 bits - if starting from the middle of a byte, rearrange bits (shift left 4 overall)
+	byte data[2];
+	if(!(fByteCount % 3)){
+		data[0] = fBuffer[fByteCount];
+		data[1] = (fBuffer[fByteCount + 1] & 0xF0);
+		fByteCount++;
+	}
+	else{
+		data[0] = ((fBuffer[fByteCount] & 0x0F) << 4);
+		int temp = (fBuffer[(fByteCount + 1)] >> 4);
+		data[0] = (data[0] + temp);
+		data[1] = (fBuffer[(fByteCount + 1)] & 0xF0);
+		fByteCount += 2;
+	}
+	cout << "fByteCount: " << fByteCount << endl;
+
+	int result = 0;
+	fByteIndex = 0;
+	fBitIndex = 8;
+
+	for(int i = 0; i < 12; i++){
+		if(data[fByteIndex] & (1 << (fBitIndex - 1))){ //if the MSB is 1, write it to the result
+			result += (1 << i);
+		}
+		fBitIndex--;
+
+		//if at the end of the byte, move on to the next
+		if(fBitIndex == 0){
+			fByteIndex = 1;
+			fBitIndex = 8;
+		}
+	}
+
+	if(fByteCount >= 32){
+		reload();
+	}
+
+	return result;
+}
+
+void IStream12Bits::close()
+{
+	fIStream.close();
+}
+
+bool IStream12Bits::fail()
+{
+	return fIStream.fail();
+}
+
+bool IStream12Bits::eof()
+{
+	return fIStream.eof();
+}
+
+IStream12Bits& IStream12Bits::operator>>(int& aCode)
+{
+	aCode = fetchCode();
+	return *this;
+}

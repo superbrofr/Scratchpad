@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=name\ address\ phone\ salary\ id
+comment0.target=Instructor(java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ java.lang.String)
+comment0.text=\r\n\ Creates\ an\ instructor.\r\n\ @param\ name\ The\ name\ of\ the\ instructor.\r\n\ @param\ address\ The\ address\ of\ the\ instructor.\r\n\ @param\ phone\ The\ phone\ of\ the\ instructor.\r\n\ @param\ salary\ The\ salary\ of\ the\ instructor.\r\n\ @param\ id\ The\ id\ of\ the\ instructor.\r\n
+numComments=1

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Parser()
+comment0.text=\r\n\ Create\ a\ parser\ to\ read\ from\ the\ terminal\ window.\r\n
+comment1.params=aWord1\ aWord2
+comment1.target=Command\ getCommand(java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Creates\ and\ returns\ a\ command,\ as\ if\ the\ command\ words\ 'word1'\ and\ 'word2'\ were\ typed\ into\ the\ system\r\n\ @return\ The\ next\ command\ from\ the\ user.\r\n
+comment2.params=
+comment2.target=java.lang.String\ showCommands()
+comment2.text=\r\n\ Return\ out\ a\ list\ of\ valid\ command\ words.\r\n\ @return\ A\ list\ of\ all\ valid\ command\ words.\r\n
+numComments=3
