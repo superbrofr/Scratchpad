@@ -5,23 +5,6 @@ from django.core.urlresolvers import reverse
 
 from polls.models import Poll, Choice
 
-# A simple view - needs to be mapped to a URL in URLconf.
-# A URLconf is pure python code mapping between URL patterns (regex) to python callback functions (views).
-def index(request):
-	latest_poll_list = Poll.objects.order_by('-pub_date')[:5]
-	context = {'latest_poll_list' : latest_poll_list}
-	# render(request_object, template_name, optional_dictionary) - returns a corresponding HttpRequest object
-	return render(request, 'polls/index.html', context)
-
-def detail(request, poll_id):
-	# alternatively, get_list_or_404()
-	poll = get_object_or_404(Poll, pk=poll_id) # takes a django model, then an arbitrary no. of arguments which are passed to get(). Http404 is raised if the object doesn't exist
-	return render(request, 'polls/details.html', {'poll' : poll})
-
-def results(request, poll_id):
-	poll = get_object_or_404(Poll, pk=poll_id)
-	return render(request, 'polls/results.html', {'poll' : poll})
-
 def vote(request, poll_id):
 	p = get_object_or_404(Poll, pk=poll_id)
 	try:
