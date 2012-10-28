@@ -1,5 +1,6 @@
 *.exe
 *.class
+*.pyc
 
 *.sublime-project
 *.sublime-workspace
