@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=theTitle\ theDirector\ time
-comment0.target=DVD(java.lang.String,\ java.lang.String,\ int)
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ DVD\r\n\ @param\ theTitle\ The\ title\ of\ this\ DVD.\r\n\ @param\ theDirector\ The\ director\ of\ this\ DVD.\r\n\ @param\ time\ The\ running\ time\ of\ the\ main\ feature.\r\n
-comment1.params=
-comment1.target=java.lang.String\ getDirector()
-comment1.text=\r\n\ @return\ The\ director\ for\ this\ DVD.\r\n
-numComments=2

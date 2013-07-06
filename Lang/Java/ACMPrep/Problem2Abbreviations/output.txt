@@ -1,9 +1,0 @@
-1
-cat c
-dog d
-mouse m
-horse h
-2
-ant ant
-antelope antel
-anteater antea

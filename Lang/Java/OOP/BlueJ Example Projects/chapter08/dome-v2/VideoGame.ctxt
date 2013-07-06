@@ -1,5 +1,0 @@
-#BlueJ class context
-comment0.params=title\ time\ thePlatform
-comment0.target=VideoGame(java.lang.String,\ int,\ java.lang.String)
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ VideoGame\r\n
-numComments=1
